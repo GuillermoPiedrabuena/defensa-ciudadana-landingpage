@@ -13,10 +13,11 @@ TEMPLATE_DIR = Path(__file__).parent / "templates"
 app.mount("/statics", StaticFiles(directory=STATIC_DIR), name="statics")
 templates = Jinja2Templates(directory=STATIC_DIR)
 
-@app.get("/herencias", response_class=HTMLResponse)
-async def get_herencias(request: Request):
-    return templates.TemplateResponse("herencias.html", {"request": request, "logo_url": "/statics/logo.png"})
-
 @app.get("/alimentos", response_class=HTMLResponse)
 async def get_alimentos(request: Request):
-    return templates.TemplateResponse("alimentos.html", {"request": request, "logo_url": "/statics/logo.png"})
+    return templates.TemplateResponse("alimentos.html", {
+        "request": request, 
+        "logo_url": "/statics/logo.png",
+        "lawyers_url": "/statics/df_lawyers.jpg",
+    
+    })
